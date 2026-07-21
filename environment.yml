@@ -12,3 +12,4 @@ dependencies:
       - langchain-core
       - langchain-google-genai
       - python-dotenv
+      - langgraph-checkpoint-sqlite
