@@ -34,7 +34,6 @@ Before running the project, ensure you have the following installed:
 conda env create -f environment.yml
 conda activate ai-rag-chatbot-learning
 ```
-
 2. Configure your environment variables:
 
 Create or update the `.env` file in the project root with the following values:
