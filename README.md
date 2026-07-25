@@ -43,7 +43,6 @@ Create or update the `.env` file in the project root with the following values:
 GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-1.5-flash
 ```
-
 ## Running the Application
 
 Start the Streamlit frontend:
@@ -51,7 +50,6 @@ Start the Streamlit frontend:
 ```bash
 streamlit run streamlit_frontend.py
 ```
-
 This will launch the chatbot interface in your browser.
 
 ## Notes
@@ -60,5 +58,4 @@ This will launch the chatbot interface in your browser.
 - If you encounter model availability issues, update the `GEMINI_MODEL` value in the `.env` file to a supported Gemini model.
 
 ## License
-
 This project is intended for educational and learning purposes.
