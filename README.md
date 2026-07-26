@@ -1,60 +1,98 @@
 # AI RAG Chatbot Learning Material
 
-This project demonstrates a simple conversational AI application built with Streamlit and LangGraph, powered by Google Gemini.
+This repository is a hands-on learning project for building a LangGraph-based chatbot with Google Gemini, Streamlit, tool use, and optional observability with LangSmith.
 
-## Overview
+## What is included
 
-The repository contains a lightweight chatbot architecture composed of:
+The project demonstrates several chatbot patterns:
 
-- a backend graph workflow implemented with LangGraph
-- a frontend interface built with Streamlit
-- environment-based configuration for the Gemini API key and model selection
+- a basic LangGraph chatbot with Gemini
+- a database-backed version with SQLite checkpoints
+- a tool-using version that can call external functions such as web search, arithmetic, and stock lookup
+- a Streamlit frontend with chat history and thread-based conversations
+- optional LangSmith tracing for observability during runs
 
-## Project Structure
+## Project structure
 
-- `langgraph_backend.py` - Defines the LangGraph chatbot workflow and Gemini model integration.
-- `streamlit_frontend.py` - Provides the Streamlit user interface for chatting with the model.
-- `environment.yml` - Conda environment configuration for installing project dependencies.
-- `.env` - Stores local environment variables such as the Gemini API key.
-- `.gitignore` - Prevents sensitive files such as `.env` from being committed to GitHub.
+- [langgraph_backend.py](langgraph_backend.py) - Simple chatbot workflow using LangGraph and Gemini.
+- [langgraph_database_backend.py](langgraph_database_backend.py) - Same workflow but with SQLite-based persistence for conversation threads.
+- [langgraph_tool_backend.py](langgraph_tool_backend.py) - Tool-enabled chatbot with search, calculator, and stock price tools.
+- [streamlit_frontend.py](streamlit_frontend.py) - Basic Streamlit chat UI.
+- [streamlit_frontend_database.py](streamlit_frontend_database.py) - Streamlit UI with database-backed conversation history.
+- [streamlit_frontend_tool.py](streamlit_frontend_tool.py) - Streamlit UI for the tool-using chatbot with visible tool activity.
+- [environment.yml](environment.yml) - Conda environment configuration.
 
 ## Prerequisites
 
-Before running the project, ensure you have the following installed:
+Before running the project, make sure you have:
 
 - Python 3.11
 - Conda or Miniconda
-- A valid Google Gemini API key
+- A Google Gemini API key
+- Optional: a LangSmith API key if you want tracing enabled
 
 ## Installation
 
-1. Create and activate the Conda environment:
+1. Create and activate the environment:
 
 ```bash
 conda env create -f environment.yml
 conda activate ai-rag-chatbot-learning
 ```
-2. Configure your environment variables:
 
-Create or update the `.env` file in the project root with the following values:
+2. Create a `.env` file in the project root with your credentials:
 
 ```env
-GEMINI_API_KEY=your_api_key_here
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-3.1-flash-lite
 ```
-## Running the Application
 
-Start the Streamlit frontend:
+Optional LangSmith variables:
+
+```env
+LANGSMITH_TRACING=true
+LANGSMITH_API_KEY=your_langsmith_api_key
+LANGCHAIN_PROJECT=ai-rag-chatbot-learning
+```
+
+> If you run the tool-based backend, make sure the `langchain-community` package is available in your environment.
+
+## Running the app
+
+### Basic version
 
 ```bash
 streamlit run streamlit_frontend.py
 ```
-This will launch the chatbot interface in your browser.
+
+### Database-backed version
+
+```bash
+streamlit run streamlit_frontend_database.py
+```
+
+### Tool-enabled version
+
+```bash
+streamlit run streamlit_frontend_tool.py
+```
+
+## Features in the tool-enabled backend
+
+The tool-based workflow supports:
+
+- DuckDuckGo web search
+- arithmetic calculations
+- stock price lookup via an external API
+
+The frontend shows tool usage status while the assistant is reasoning and calling tools.
 
 ## Notes
 
-- The `.env` file is intentionally excluded from version control to protect your API credentials.
-- If you encounter model availability issues, update the `GEMINI_MODEL` value in the `.env` file to a supported Gemini model.
+- The `.env` file is intentionally excluded from version control to protect sensitive credentials.
+- If Gemini model availability changes, update the `GEMINI_MODEL` value in your `.env` file.
+- LangSmith tracing is optional and can be enabled for debugging and monitoring agent behavior.
 
 ## License
+
 This project is intended for educational and learning purposes.
