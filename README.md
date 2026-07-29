@@ -39,21 +39,21 @@ Before running the project, make sure you have:
 
 1. Create and activate the environment:
 
-```bash
+```
 conda env create -f environment.yml
 conda activate ai-rag-chatbot-learning
 ```
 
 2. Create a `.env` file in the project root with your credentials:
 
-```env
+```
 GEMINI_API_KEY=your_gemini_api_key
 GEMINI_MODEL=gemini-3.1-flash-lite
 ```
 
 3. Install any additional dependencies if needed:
 
-```bash
+```
 pip install -r requirements.txt
 ```
 
@@ -63,31 +63,31 @@ pip install -r requirements.txt
 
 ### Basic version
 
-```bash
+```
 streamlit run streamlit_frontend.py
 ```
 
 ### Database-backed version
 
-```bash
+```
 streamlit run streamlit_frontend_database.py
 ```
 
 ### Tool-enabled version
 
-```bash
+```
 streamlit run streamlit_frontend_tool.py
 ```
 
 ### RAG-enabled version
 
-```bash
+```
 streamlit run streamlit_frontend_rag.py
 ```
 
 ### MCP-enabled version
 
-```bash
+```
 streamlit run streamlit_frontend_mcp.py
 ```
 
